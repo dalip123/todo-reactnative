@@ -12,11 +12,13 @@ import * as AddTodoCreator from '../action'
      console.log("dispatch:",dispatch);
      }
   render() {
-  const {dispatch}=this.props;
+  const {todos,dispatch}=this.props;
     console.log("dispatch",dispatch);
+     //console.log("todos:",todos);
     return (
   <View style={styles.container}>
-  <AddTodo {...bindActionCreators(AddTodoCreator,dispatch)}/>
+  <AddTodo todos={todos} {...bindActionCreators(AddTodoCreator,dispatch)}/>
+
      <VisibleTodoList/>
       </View>
     )
@@ -28,5 +30,11 @@ const styles=StyleSheet.create({
     justifyContent:'center'
   }
 })
-
-export default connect()(AppTodo);
+const mapStateToProps=(state)=>{
+  console.log("state:",state);
+  console.log("todos:",state.todos);
+  return {
+    todos:state.todos
+  }
+}
+export default connect(mapStateToProps)(AppTodo);
