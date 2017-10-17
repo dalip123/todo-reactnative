@@ -1,13 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ListView} from 'react-native';
+import {TouchableHighlight,Text} from 'react-native';
 const Todo=({text,completed,onClick})=>(
- <ListView onPress={onClick}>{text}</ListView>
+  <TouchableHighlight onPress={onClick} style={
+    {
+      textDecoration: completed?'line-through':'none'
+    }
+  }><Text>{text}</Text></TouchableHighlight>
 )
 
-Todo.PropTypes={
-  text: PropTypes.text.isRequired,
+
+
+Todo.propTypes={
+  text: PropTypes.string.isRequired,
   completed: PropTypes.bool.isRequired,
-  onClick: PropTypes.fun.isRequired
+  onClick: PropTypes.func.isRequired
 }
 export default Todo

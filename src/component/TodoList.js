@@ -1,14 +1,14 @@
 import React from 'react';
-import {List} from 'react-native';
+import {View,List,Text} from 'react-native';
 import Todo from './Todo';
-
+import PropTypes from 'prop-types';
 
 const TodoList = ({ todos, onTodoClick }) => (
-  <List>
-    {todos.map(todo => (
-      <Todo key={todo.id} {...todo} onPress={() => onTodoClick(todo.id)} />
-    ))}
-  </List>
+        <View>
+
+<Text>{todos}</Text>
+
+        </View>
 )
 
 TodoList.propTypes = {
